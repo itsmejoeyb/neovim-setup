@@ -253,6 +253,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Map for opening file explorer
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
+-- Remap for project search
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", '<leader>ps', function()
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+
 -- Remap for moving highlighted code
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
